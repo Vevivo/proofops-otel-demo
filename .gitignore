@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+coverage/
+dist/
+npm-debug.log*
+*.tgz
+*.tar.gz
+*.tar.xz

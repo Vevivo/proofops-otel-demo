@@ -1,0 +1,25 @@
+{
+  "name": "proofops-otel-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Grant-grade demo: privacy-minimized OpenTelemetry log proofs anchored with the existing AR.IO verification stack.",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "build": "node scripts/build-static.mjs",
+    "test": "node --test",
+    "demo:cli": "node examples/cli-demo.mjs",
+    "deploy:upload": "npm run build && ario-deploy upload --deploy-folder dist",
+    "deploy:arns": "npm run build && ario-deploy deploy --arns-name document --undername proofops --deploy-folder dist"
+  },
+  "dependencies": {
+    "@ar.io/anchor": "0.2.0"
+  },
+  "devDependencies": {
+    "@ar.io/deploy": "1.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

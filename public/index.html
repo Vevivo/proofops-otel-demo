@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self' https://proofops.194.163.169.13.sslip.io; img-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="Privacy-minimized OpenTelemetry audit proofs with AR.IO and ArNS.">
+  <title>ProofOps — OpenTelemetry proofs on AR.IO</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">PROOFOPS · ZERO-CLOUD DEMO</div>
+      <h1>Make operational evidence portable.</h1>
+      <p>Convert standard OpenTelemetry logs into privacy-minimized, tamper-evident proof using AR.IO’s existing verification stack.</p>
+      <div class="status"><span id="modeDot"></span><span id="modeText">Checking AR.IO mode…</span></div>
+      <div class="links">
+        <span id="frontendMode" class="link-chip">Frontend: checking host…</span>
+        <span id="apiMode" class="link-chip">Proof API: checking…</span>
+        <a class="link-chip" href="https://github.com/Vevivo/proofops-otel-demo" target="_blank" rel="noreferrer">Open source ↗</a>
+      </div>
+    </header>
+
+    <section class="steps">
+      <article><strong>01</strong><h2>Receive</h2><p>Accept OTLP/HTTP JSON from an existing telemetry pipeline.</p></article>
+      <article><strong>02</strong><h2>Minimize</h2><p>Keep raw bodies private; commit to the complete source locally.</p></article>
+      <article><strong>03</strong><h2>Prove</h2><p>Batch selected events and export independently checkable evidence.</p></article>
+    </section>
+
+    <section class="workspace">
+      <div class="panel input-panel">
+        <div class="panel-title"><span>OTLP source</span><button id="sampleBtn" class="ghost">Reset sample</button></div>
+        <textarea id="source" spellcheck="false"></textarea>
+        <div class="actions">
+          <button id="previewBtn">Preview safe record</button>
+          <button id="proofBtn">Create local proof</button>
+          <button id="arioBtn" class="accent">Create AR.IO dev proof</button>
+        </div>
+      </div>
+      <div class="panel output-panel">
+        <div class="panel-title"><span>Evidence result</span><span id="verdict" class="pill neutral">WAITING</span></div>
+        <pre id="output">Load the sample, then preview or prove it.</pre>
+        <div class="actions">
+          <button id="verifyBtn" disabled>Verify original</button>
+          <button id="tamperBtn" class="danger" disabled>Tamper one character</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy">
+      <div><span>RAW BODY</span><strong>Never uploaded</strong></div>
+      <div><span>SENSITIVE ATTRIBUTES</span><strong>Not disclosed</strong></div>
+      <div><span>COMMITMENT</span><strong>SHA-256 locally</strong></div>
+      <div><span>NETWORK FORMAT</span><strong>Existing AR.IO proofs</strong></div>
+    </section>
+
+    <section class="architecture">
+      <div>
+        <span>PERMANENT FRONTEND</span>
+        <strong>Arweave manifest · proofops_document ArNS</strong>
+      </div>
+      <div class="arrow">→</div>
+      <div>
+        <span>LIVE PROOF API</span>
+        <strong>Isolated Contabo service · raw logs never uploaded</strong>
+      </div>
+      <div class="arrow">→</div>
+      <div>
+        <span>OPTIONAL ANCHOR</span>
+        <strong>Existing AR.IO evidence format · explicit opt-in only</strong>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

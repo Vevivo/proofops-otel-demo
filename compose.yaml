@@ -1,0 +1,21 @@
+name: proofops-demo
+
+services:
+  proofops:
+    build: .
+    restart: unless-stopped
+    environment:
+      ENABLE_ARIO_DEV_UPLOAD: "0"
+      CORS_ALLOWED_ORIGINS: "${CORS_ALLOWED_ORIGINS:-https://proofops_document.ar.io}"
+    ports:
+      - "127.0.0.1:${PROOFOPS_HOST_PORT:-8787}:8787"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,noexec,nosuid
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 100
+    mem_limit: 256m
+    cpus: 0.50
